@@ -11,7 +11,7 @@ class Author(models.Model):
     date_of_death = models.DateField('Died', null=True, blank=True, 
                                      help_text='Enter date of death of the Author')
     class Meta:
-        ordering = [-'date_of_birth']
+        ordering = ['-date_of_birth']
     
     def get_absolute_url(self):
         return reverse("author_detail", args=[str(self.id)])
