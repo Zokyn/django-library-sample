@@ -34,10 +34,13 @@ class Book(models.Model):
                                help_text='Write a brief description of the book')
     genre : Genre = models.ManyToManyField(Genre, help_text='Select a genre for this book') # ManyToMany
     def __str__(self) -> str:
-        return f'{self.title};{self.author.last_name};{self.ISBN}'
+        return f'"{self.title}" por {self.author.first_name} {self.author.last_name}'
     def get_absolute_url(self):
         return reverse("book_details", args=[str(self.id)])
+    def display_genre(self) -> str:
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
 
+    display_genre.short_description = 'Genre'
 class BookInstance(models.Model):
     LOAN_STATUS = [
         ("A", "Available"),
@@ -51,7 +54,7 @@ class BookInstance(models.Model):
     book = models.ForeignKey(Book, on_delete=models.RESTRICT, null=True)
     status = models.CharField(max_length=10,choices=LOAN_STATUS, blank=True, 
                               default='A', help_text='Set book availability')
-    imprint = models.CharField(max_length=200)
+    imprint = models.CharField(max_length=200, null=True, blank=True)
     due_date = models.DateField(null=True, blank=True, help_text='date to book be returned')
     class Meta:
         ordering = ['due_date']
