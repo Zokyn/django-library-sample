@@ -1,17 +1,29 @@
 {% extends "base_generic.html" %}
 {% block content %}
     <h1>{{ book.title }}</h1>
-    <div class="container-fluid">
+    <div class="container-fluid border-bottom">
         <p>{{ book.summary }}</p>
         <div class="row">
             <strong>Author:</strong> 
-            {{ book.author.first_name }} {{ book.author.last_name}}
-            {% if book.author.date_of_birth %}
-                {{ book.author.date_of_birth }} - {{ book.author.date_of_death }}
-            {% endif %}
+            <table class="table">
+                <td>
+                    {{ book.author.first_name }} {{ book.author.last_name}}
+                </td>
+                {% if book.author.date_of_birth %}
+                <td>
+                    {{ book.author.date_of_birth|date:"j E, Y" }}
+                </td> 
+                <td>
+                    {{ book.author.date_of_death|date:"j E, Y" }}
+                </td>
+                {% endif %}
+            </table>
         </div>
         <div class="row">
-            <strong>Genres:</strong> {{ book.display_genre }}
+            <strong>Genres:</strong> 
+            <div class="container">
+                {{ book.display_genre }}
+            </div>
         </div>
     </div>
 {% endblock %}
