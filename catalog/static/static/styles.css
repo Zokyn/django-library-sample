@@ -1,0 +1,31 @@
+.top-bar {
+  padding: 1em 0 1em 1em;
+  background-color: blue;
+  color: white;
+  align-items: center
+}
+
+.sidebar-nav {
+  padding: 0;
+  border: solid 3px grey;
+  border-radius: 0 0 10px 0;
+  border-left: none;
+  border-top: none;
+}
+.sidebar-nav>ul {
+  list-style: none;
+}
+.sidebar-nav>ul>a {
+  text-decoration-line: none;
+}
+.sidebar-nav>ul>a>li {
+  font-size: 18px;
+  padding: 0.75em;
+}
+.main-content {
+  padding: 1em
+}
+
+.alert-message {
+  text-align: center;
+}

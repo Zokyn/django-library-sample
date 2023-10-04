@@ -14,9 +14,9 @@ def index(request):
 
     context = {
         'n_books': n_books,
+        'n_authors': n_authors,
         'n_instances': n_instances,
-        'n_instances_available': n_instances_available,
-        'n_authors': n_authors
+        'n_instances_available': n_instances_available
     }
     
     
