@@ -1,28 +1,33 @@
 {% extends "base_generic.html" %}
+{% block title %}
+    <title>Local Library - Home</title>
+{% endblock%}
 {% block content %}
 <h1>Local Library Home</h1>
 <p>Welcome to LocalLibrary</p>
 
-<h2>Library Database</h2>
-<p>The library has the following records counts:</p>
-<div>
-    <table>
-        <tr>
-            <td><strong>Books</strong></td>
-            <td>{{n_books}}</td>
-        </tr>
-        <tr>
-            <td><strong>Authors</strong></td>
-            <td>{{n_authors}}</td>
-        </tr>
-        <tr>
-            <td><strong>Copies</strong></td>
-            <td>{{n_instances}}</td>
-        </tr>
-        <tr>
-            <td><strong>Available</strong></td>
-            <td>{{n_instances_available}}</td>
-        </tr>
-    </table>
+<div class="container border">
+    <h2>Library Database</h2>
+    <p>The library has the following records counts:</p>
+    <div class="row align-items-start">
+        <table class="table">
+            <tr>
+                <td><strong>Books</strong></td>
+                <td>{{n_books}}</td>
+            </tr>
+            <tr>
+                <td><strong>Authors</strong></td>
+                <td>{{n_authors}}</td>
+            </tr>
+            <tr>
+                <td><strong>Copies</strong></td>
+                <td>{{n_instances}}</td>
+            </tr>
+            <tr>
+                <td><strong>Available</strong></td>
+                <td>{{n_instances_available}}</td>
+            </tr>
+        </table>
+    </div>
 </div>
 {% endblock %}
