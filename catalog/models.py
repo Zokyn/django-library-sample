@@ -7,9 +7,9 @@ class Author(models.Model):
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60)
     date_of_birth = models.DateField('Birthday', null=True, blank=True, 
-                                     help_text='Enter date of birth of the Author')
+                                    help_text='Enter date of birth of the Author')
     date_of_death = models.DateField('Died', null=True, blank=True, 
-                                     help_text='Enter date of death of the Author')
+                                    help_text='Enter date of death of the Author')
     class Meta:
         ordering = ['-date_of_birth']
     
@@ -31,7 +31,7 @@ class Book(models.Model):
     author : Author = models.ForeignKey(Author, on_delete=models.SET_DEFAULT,
                                         null=True, default='Unknown')
     summary = models.TextField(max_length=1000, 
-                               help_text='Write a brief description of the book')
+                            help_text='Write a brief description of the book')
     genre : Genre = models.ManyToManyField(Genre, help_text='Select a genre for this book') # ManyToMany
     def __str__(self) -> str:
         return f'"{self.title}" por {self.author.first_name} {self.author.last_name}'
@@ -50,10 +50,10 @@ class BookInstance(models.Model):
         ("M", "Maintenance")
     ]
     bid = models.UUIDField(primary_key=True, default=uuid.uuid4, 
-                           help_text='Unique ID for this particular book in library')
+                        help_text='Unique ID for this particular book in library')
     book = models.ForeignKey(Book, on_delete=models.RESTRICT, null=True)
     status = models.CharField(max_length=10,choices=LOAN_STATUS, blank=True, 
-                              default='A', help_text='Set book availability')
+                            default='A', help_text='Set book availability')
     imprint = models.CharField(max_length=200, null=True, blank=True)
     due_date = models.DateField(null=True, blank=True, help_text='date to book be returned')
     class Meta:

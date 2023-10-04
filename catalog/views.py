@@ -27,3 +27,6 @@ class BookListView(generic.ListView):
     model = Book
     context_object_name = "book_list"
     queryset = Book.objects.order_by('-title')[:5]
+
+class BookDetailView(generic.DetailView):
+    model = Book
